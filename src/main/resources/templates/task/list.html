@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<link rel="stylesheet" th:href="@{/css/dojo.css}"
+	href="../static/css/dojo.css">
+
+<div th:replace="~{common :: common-script}"></div>
+<div th:replace="~{common :: common-head}"></div>
+
+<body>
+
+	<div th:replace="~{common :: common-nav}"></div>
+	<div class="container-fluid header-up">
+		<div class="row">
+			<nav th:replace="~{common :: common-sidebar}"></nav>
+
+			<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+				<h1>タスク管理画面</h1>
+				<div class="row justify-content-md-center">
+					<div class="col-lg-11">
+						<h3>タスク登録</h3>
+						<div class="alert alert-warning" role="alert" th:if="${message}"
+							th:text="${message}"></div>
+						<div class="alert alert-danger" role="alert"
+							th:if="${errorMessage}" th:text="${errorMessage}"></div>
+						<div class="content-box">
+							<form method="post" th:action="@{/task/insert}">
+								<div>
+								 	<label for="title" class="form-label">タスク名*</label>
+									<input type="text" id="title" class="form-control" name="title" placeholder="タスク内容">
+									<div id="titleHelp" class="form-text">タスクの内容を具体的に記載してください</div>
+								</div>
+								<br>
+								<div>
+									<label for="date" class="form-label">期限日*</label>
+									<input type="date" id="date" class="form-control" name="limit">
+									<div id="dateHelp" class="form-text">タスクの期日を入力してください</div>
+									<span class="d-flex justify-content-end">
+										<button id="submit" type="submit" class="btn btn-warning">追加</button>
+									</span>
+								</div>
+							</form>
+						</div>
+					</div>
+					
+					<div class="col-lg-11 margin-top">
+						<h3>タスク一覧</h3>
+							<table class="table table-responsive">
+								<thead>
+									<tr>
+										<th  scope="col">No.</th>
+										<th style="width: 60%" scope="col">タスク</th>
+										<th style="width: 20%" scope="col">期限日</th>
+										<th style="width: 10%" scope="col"></th>
+										<th style="width: 10%" scope="col"></th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="task, stat : ${taskEntity.taskList}">
+										<td th:text="${stat.count}">1</td>
+										<td th:text="${task.title}">タイトル</td>
+										<td th:text="${task.limitday}">2020/11/11</td>
+										<td>
+											<form method="post" th:action="@{/task/delete}">
+												<input type="hidden" th:value="${task.id}" name="id" id="delete">
+												<button type="submit" class="btn btn-danger">削除</button>
+											</form>
+										</td>
+										<td>
+											<form method="post" th:action="@{/task/complate}" th:if="${!task.isComplate}">
+												<input type="hidden" th:value="${task.id}" name="id" id="complate">
+												<button type="submit" class="btn btn-primary">完了</button>
+											</form>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+
+							<form class="d-flex justify-content-end" method="post" th:action="@{/task/csv}">
+								<button type="submit" class="btn btn-success btnx-lime">CSV出力</button>
+							</form>
+					</div>
+				</div>
+			</main>
+		</div>
+	</div>
+</body>
+</html>

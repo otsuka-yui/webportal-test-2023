@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<link rel="stylesheet" th:href="@{/css/dojo.css}" href="../static/css/dojo.css">
+
+<div th:replace="~{common :: common-script}"></div>
+<div th:replace="~{common :: common-head}"></div>
+
+<body>
+
+	<div th:replace="~{common :: common-nav}"></div>
+		<div class="container-fluid header-up">
+			<div class="row">
+				<nav th:replace= "~{common :: common-sidebar}"></nav>
+				
+		      	<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+					<h1>アルゴリズム道場</h1>
+					<div class="row justify-content-md-center">
+					
+					
+						<div class="col-md-6">
+							<div class="content-box-q">
+								<h2>Level 0</h2>
+								<h4>問題</h4>
+								<p>Eメールアドレスはローカル部とドメインを「@」を繋いだ文字列で表されます。</p>
+								<p>ローカル部を s ,ドメインを t として、文字列がそれぞれ変数に格納されています。</p>
+								<p>以下の構文に沿った文字列を出力してください。</p>
+								<hr>
+								<h4>入力例1</h4>
+								<div class="content-box-e">
+								String local = "jouhou";<br>
+								String domain = "hcs.ac.jp";
+								</div>
+								<h4>出力例1</h4>
+								<div class="content-box-e">
+								jouhou@hcs.ac.jp
+								</div>
+								<hr>
+								<p><strong>※結果は、標準出力(コンソール)へ出力すること※</strong></p>
+								<p><img class="img" id="level0_img" th:src="@{/img/practice/level0.png}" ></p>
+								<form method="post" class="d-flex justify-content-end" th:action="@{/level0}">
+									<button id="level1" type="submit" class="btn btn-success mx-auto btnx-lime-non">実行</button>
+								</form>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="content-box-q">
+								<h2>Level 1</h2>
+								<h4>問題</h4>
+								<p>とある町Aでは、新しくテーマパークができました。</p>
+								<p>とある町Aにはもともと100人の人が住んでいます。</p>
+								<p>A 村では人口が毎月 X 人ずつ増加します。Y 月後の A 村の人口はいくらですか？</p>
+								<h4>入力</h4>
+								<div class="content-box-ex">
+								X Y
+								</div>
+								<ul>
+									<li>1文字目に A 村が毎月増加する人数 X が与えられます。</li>
+									<li>2文字目に何か月後の人口を求めるかを表す Y が与えられます。</li>
+									<li>1文字目と2文字目の間に半角スペースが挿入されます。</li>
+								</ul>
+								<hr>
+								<h4>入力例1</h4>
+								<div class="content-box-e">
+								180 2
+								</div>
+								<h4>出力例1</h4>
+								<div class="content-box-e">
+								460
+								</div>
+								<hr>
+								<h4>入力例2</h4>
+								<div class="content-box-e">
+								300 11
+								</div>
+								<h4>出力例2</h4>
+								<div class="content-box-e">
+								3400
+								</div>
+								<form method="post" class="d-flex justify-content-end" th:action="@{/level1}">
+									<button id="level1" type="submit" class="btn btn-success mx-auto btnx-lime-non">実行</button>
+								</form>
+							</div>
+						</div>
+			
+						<div class="col-md-6">
+							<div class="content-box-q">
+								<h2>Level 2</h2>
+								<h4>問題</h4>
+								<p>アルファベットからなる長さ N の文字列 S が与えられます。この文字列の最後の文字を出力してください。</p>
+								
+								<h4>入力</h4>
+								<div class="content-box-ex">
+								S
+								</div>
+								<hr>
+								<h4>入力例1</h4>
+								<div class="content-box-e">
+								Namae
+								</div>
+								<h4>出力例1</h4>
+								<div class="content-box-e">
+								e
+								</div>
+								<form method="post" class="d-flex justify-content-end" th:action="@{/level2}">
+									<button id="level1" type="submit" class="btn btn-success mx-auto btnx-lime-non">実行</button>
+								</form>
+							</div>
+						</div>
+						
+						<div class="col-md-6">
+							<div class="content-box-q">
+								<h2>Level 3</h2>
+								<h4>問題</h4>
+								<p>以下のルールで文字変換を行います。</p>
+								<ol>
+									<li>とある文字列から母音を取り除いて子音のみを連結する</li>
+									<li>ここで母音とは "a", "e", "i", "o", "u" の 5 つのアルファベットの小文字( "a", "e", "i", "o", "u" )、大文字( "A", "E", "I", "O", "U" )を指し、子音とはそれ以外のアルファベットを意味する。</li>
+								</ol>
+								
+								<h4>入力例1</h4>
+								<div class="content-box-e">
+								Torvalds
+								</div>
+								<h4>出力例1</h4>
+								<div class="content-box-e">
+								Trvlds
+								</div>
+								<hr>
+								<h4>入力例2</h4>
+								<div class="content-box-e">
+								Hokkaido
+								</div>
+								<h4>出力例2</h4>
+								<div class="content-box-e">
+								Hkkd
+								</div>
+								<hr>
+								<form method="post" class="d-flex justify-content-end" th:action="@{/level3}">
+									<div class="input-group">
+										<span class="input-group-text" id="addon-wrapping">入力値</span>
+										<input type="text" class="form-control" name="level3"> 
+										<span class="input-group-btn">
+											<button id="level1" type="submit" class="btn btn-success mx-auto btnx-lime-non">実行</button>
+										</span>
+									</div>
+								</form>
+							</div>
+						</div>
+			
+						<div class="col-md-6">
+							<div class="content-box-q">
+								<h2>Level 4</h2>
+								<h4>問題</h4>
+								<p>以下のルールで○✕ゲームが行われています。</p>
+								<ol>
+									<li>縦 1 マス、横 5 マスのマス目を作る。</li>
+									<li>全てのマスに o または x を書き込む。</li>
+									<li>o が横に連続して 3 つ以上並んでいるなら、 o の勝ちである。</li>
+									<li>そうでなくて、 x が横に連続して 3 つ以上並んでいるなら、 x の勝ちである。</li>
+									<li>このどちらでもない場合、引き分けである。</li>
+								</ol>
+								<p>○✕ゲームの結果を判定してください。</p>
+								
+								<h4>入力例1</h4>
+								<div class="content-box-e">
+								xooox
+								</div>
+								<h4>出力例1</h4>
+								<div class="content-box-e">
+								o
+								</div>
+								<p>o が連続して 3 つ並んでいるので、 o の勝ちです。</p>
+								<hr>
+								<h4>入力例2</h4>
+								<div class="content-box-e">
+								xxxxx
+								</div>
+								<h4>出力例2</h4>
+								<div class="content-box-e">
+								x
+								</div>
+								<p>x が連続して 5 つ並んでいるので、 x の勝ちです。</p>
+								<hr>
+								<h4>入力例3</h4>
+								<div class="content-box-e">
+								xoxxo
+								</div>
+								<h4>出力例3</h4>
+								<div class="content-box-e">
+								draw
+								</div>
+								<p>o も x も 3 つ以上連続して並んでいないため、引き分けです。</p>
+								<hr>
+								<form method="post" class="d-flex justify-content-end" th:action="@{/level4}">
+									<div class="input-group">
+										<span class="input-group-text" id="addon-wrapping">入力値</span>
+										<input type="text" class="form-control" name="level4"> 
+										<span class="input-group-btn">
+											<button id="level1" type="submit" class="btn btn-success mx-auto btnx-lime-non">実行</button>
+										</span>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</main>
+			</div>	
+	</div>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head th:replace="~{common :: common-head}"></head>
+<div th:replace="~{common :: common-script}"></div>
+
+<body>
+
+	<div th:replace="~{common :: common-nav}"></div>
+
+	<div class="container-fluid header-up">
+		<div class="row">
+		<nav th:replace= "~{common :: common-sidebar}"></nav>
+      	<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+      	
+			<!-- 各種コンテンツ -->
+			
+			<!--
+			<div class="row">
+				<div class="col-lg-3">
+					<div class="content-box">
+						<h2>道場</h2>
+						<form method="get" th:action="@{/dojo}">
+							<button id="hello" type="submit" class="btn btn-success mx-auto btnx-lime-non">見る</button>
+						</form>
+					</div>
+				</div>
+			
+				<div class="col-lg-3">
+					<div class="content-box">
+						<h2>計算機</h2>
+						<form method="get" th:action="@{/calc}">
+							<button id="calc" type="submit" class="btn btn-success mx-auto btnx-lime-non">検索</button>
+						</form>
+					</div>
+				</div>
+	
+				<div class="col-lg-3">
+					<div class="content-box">
+						<h2>住所検索 - 郵便番号</h2>
+						<form method="post" th:action="@{/zip}">
+							<div class="input-group">
+								<input type="number" class="form-control" name="zipcode" placeholder="郵便番号 : XXXXXXX">
+								<span class="input-group-btn">
+									<button id="zipcode" type="submit" class="btn btn-success mx-auto btnx-lime-non">検索</button>
+								</span>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			-->
+			
+	     </main>
+		</div>
+	</div>
+</body>
+</html>
