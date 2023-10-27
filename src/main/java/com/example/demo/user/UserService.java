@@ -84,6 +84,7 @@ public class UserService {
 	public boolean updateOne(UpdateUserForm userDataForm) {
 		// ユーザーフォームのデータをユーザーデータに変換
 		UserData userData = refillToData(userDataForm);
+		System.out.println("updateone" + userData);
 		try {
 			// パスワードが空であるかどうかで条件分岐
 			if (userData.getPassword().isBlank()) {
@@ -158,19 +159,26 @@ public class UserService {
 	}
 
 	private UserData refillToData(UpdateUserForm updateUserForm) {
-		UserData userData = new UserData();
-		userData.setUserId(updateUserForm.getUserId());
-		// パスワードは暗号化する
-		final String encryptedPassword = passwordEncoder.encode(updateUserForm.getPassword());
-		userData.setPassword(encryptedPassword);
-		userData.setUser_name(updateUserForm.getUser_name());
-		userData.setRole(updateUserForm.getRole());
-		// boolean型へ変換
-		boolean isEnabled = Boolean.valueOf(updateUserForm.getEnabled());
-		userData.setEnabled(isEnabled);
+        UserData userData = new UserData();
+        userData.setUserId(updateUserForm.getUserId());
 
-		return userData;
-	}
+        String password = updateUserForm.getPassword();
+        if (password.isBlank()) {
+            userData.setPassword("");
+        } else {
+            // パスワードは暗号化する
+            final String encryptedPassword = passwordEncoder.encode(password);
+            userData.setPassword(encryptedPassword);
+        }
+
+        userData.setUser_name(updateUserForm.getUser_name());
+        userData.setRole(updateUserForm.getRole());
+        // boolean型へ変換
+        boolean isEnabled = Boolean.valueOf(updateUserForm.getEnabled());
+        userData.setEnabled(isEnabled);
+
+        return userData;
+    }
 
 	private UserEntity mappingSelectResult(List<Map<String, Object>> resultList) {
 		UserEntity entity = new UserEntity();
